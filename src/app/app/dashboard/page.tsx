@@ -1,5 +1,5 @@
-import Stats from "@/components/ui/stats";
-import Branding from "@/components/ui/branding";
+import Stats from "@/src/components/ui/stats";
+import Branding from "@/src/components/ui/branding";
 
 export default function Page() {
   return (
