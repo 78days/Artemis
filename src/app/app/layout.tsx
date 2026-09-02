@@ -1,15 +1,14 @@
 import AppFooter from "@/src/components/ui/AppFooter";
 import AppHeader from "@/src/components/ui/AppHeader";
 import BackgroundHeader from "@/src/components/ui/background-pattern";
-import App from "next/app";
 
-export default function layout ({children}) :
-    { children: React.ReactNode}{
+export default function layout ({children} :
+    { children: React.ReactNode}){
     return (
         <>
         <BackgroundHeader/>
 
-        <div className="max-w-[1050px] mx-auto">
+        <div className="flex flex-col max-w-[1050px] mx-auto px-4 " >
         <AppHeader/>
         {children}
         <AppFooter/>
