@@ -1,18 +1,30 @@
-
 'use client'
-import React, { useState } from 'react'
-import { createContext } from 'vm'
 
+import { createContext, useState, type ReactNode } from 'react'
+import type { Pet } from '@/lib/types'
 
-const petContext = createContext(null)
-const PetContextProvider = ({ data , children}) => {
-    const [SelectedPetId,SetSelectedPetId] = useState(null)
-    const [Pets , SetPets] = useState(data)
+type PetContextType = {
+  selectedPetId: string | null
+  setSelectedPetId: (id: string | null) => void
+  pets: Pet[]
+  setPets: (pets: Pet[]) => void
+}
+
+export const PetContext = createContext<PetContextType | null>(null)
+
+type PetContextProviderProps = {
+  data: Pet[]
+  children: ReactNode
+}
+
+const PetContextProvider = ({ data, children }: PetContextProviderProps) => {
+  const [selectedPetId, setSelectedPetId] = useState<string | null>(null)
+  const [pets, setPets] = useState<Pet[]>(data)
 
   return (
-        <petContext.Provider value={{SelectedPetId,Pets}}>
-            {children}
-        </petContext.Provider>
+    <PetContext.Provider value={{ selectedPetId, setSelectedPetId, pets, setPets }}>
+      {children}
+    </PetContext.Provider>
   )
 }
 

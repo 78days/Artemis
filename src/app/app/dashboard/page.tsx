@@ -4,14 +4,8 @@ import Searchform from "@/src/components/ui/search-form";
 import ContentBlock from "@/src/components/ui/contentblock";
 import PetList from "@/src/components/ui/petlist";
 import PetDetails from "@/src/components/ui/petdetails";
-import axios from "axios";
-import { createContext } from "vm";
 
-export default  function Page() {
-	 
-
-	
-	
+export default function Page() {
 	return (
 		<main>
 			<div className="flex justify-between items-center text-white py-9">
@@ -22,24 +16,21 @@ export default  function Page() {
 			</div>
 			<div className="grid md:grid-cols-3 md:grid-rows-[45px_1fr] grid-rows-[45px_300px_500px] gap-5 md:h-150">
 				<div className="md:row-start-1 md:row-span-1 md:col-start-1 md:col-span-1">
-				<Searchform/>
+					<Searchform />
 				</div>
-            
-			<div className="md:row-start-2 md:row-span-full md:col-start-1 md:col-span-1">
-            <ContentBlock>
-                <PetList pets={response.data}/>
-            </ContentBlock>
-			</div>
 
-			<div className="md:row-start-1 md:row-span-full md:col-start-2 md:col-span-full">
-			<ContentBlock>
-				<PetDetails/>
-			</ContentBlock>
+				<div className="md:row-start-2 md:row-span-full md:col-start-1 md:col-span-1">
+					<ContentBlock>
+						<PetList />
+					</ContentBlock>
+				</div>
+
+				<div className="md:row-start-1 md:row-span-full md:col-start-2 md:col-span-full">
+					<ContentBlock>
+						<PetDetails />
+					</ContentBlock>
+				</div>
 			</div>
-            
-                
-            </div>
 		</main>
 	)
-;
 }

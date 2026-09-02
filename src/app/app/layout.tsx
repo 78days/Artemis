@@ -5,19 +5,18 @@ import PetContextProvider from "@/src/contexts/context-provider";
 import axios from "axios";
 
 export default async function layout({ children }: { children: React.ReactNode }) {
+	const response = await axios.get('http://bytegrad.com/course-assets/projects/petsoft/api/pets')
+	if (!response) throw new Error('Failed to fetch pets')
 
-	const response  = await axios.get('http://bytegrad.com/course-assets/projects/petsoft/api/pets')
-	if(!response) throw new Error('Failed to fetch pets')
 	return (
 		<>
 			<BackgroundHeader />
 
 			<div className="flex flex-col max-w-262.5 mx-auto px-4 ">
 				<AppHeader />
-				<PetContextProvider>
+				<PetContextProvider data={response.data}>
 					{children}
 				</PetContextProvider>
-				{children}
 				<AppFooter />
 			</div>
 		</>
